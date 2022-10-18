@@ -1,0 +1,100 @@
+body{
+    background-color: #16181e;
+}
+
+.b{
+    color:#00B9AE;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.branchb{
+    margin-left:5rem;
+    margin-top: 3.5rem;
+    width: 100%;
+    height: 100vh;
+}
+
+.allign{
+    display: flex;
+    min-width:15rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.sem_allign{
+    display: flex;
+    min-width:12rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.syllabusimg{
+    background-image: url("/assets/blurimage.png");
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50px;
+    align-items: center;
+}
+
+.textimg{
+    background-image: url("/assets/blurimage.png");
+    width: 30rem;
+    height: 20rem;
+    border-radius: 50px;
+    align-items: center;
+}
+
+.smallimg{
+    background-image: url("/assets/blurimage.png");
+    width: 10rem;
+    height: 10rem;
+    border-radius: 30px;
+    align-items: center;
+}
+
+.decision{
+    margin-top: 7rem;
+    margin-right: 20rem;
+}
+
+span.grey {
+    position: absolute;
+    left: 29px;
+    top: 0;
+    background: #dbdbdb;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    text-align: center;
+    width: 1.6em;
+}
+
+.forms{
+    position:fixed;
+    bottom:0;
+    right: 0;
+}
+
+@media (min-width: 375px) and (max-width: 768px){
+    .branchb{
+      margin-left: 0rem;
+    }
+
+    .headings{
+      margin-left: 3rem;
+    }
+
+    .forms{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .sub_btn{
+        margin-top: 1rem;
+    }
+}

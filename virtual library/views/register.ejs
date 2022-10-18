@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <%- include("./partials/head.ejs") %>
+        <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <div class="d-flex">
+        <%- include("./partials/leftsidelogin.ejs") %>
+        <div class="right">
+            <a href="/"><img class="back_button" src="assets/back_button.png"></a>
+            <div class="container">
+                <img class="mob-logo" src="assets/logo-mob.png" alt="">
+                <p class="register">Register</p>
+                <form class="form"  action="/register" method="post" style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: center;
+                    align-items: center;
+                    ">
+
+                    <% if(msg!="") { %>
+                        <div class="error"><%= msg%></div>
+                    <% } else { %>
+                        <br>
+                    <% } %>
+
+                    <input class="inputs" type="text" name="Register_number" id="Register_number" placeholder=" 📇 Register Number" ><br>
+                    
+                    <input class="inputs" type="text" name="Username" id="Username" placeholder=" 🧑 Username" ><br>
+                    
+                    <input class="inputs" type="email" name="email" id="email" placeholder=" 📧 Email address" ><br>
+                    
+                    <input class="inputs" type="password" name="password" id="password" placeholder=" 🔒 password" ><br>
+                    
+                        
+                    <button class="button" type="submit" style="
+                                            padding: 13px 22px;
+                                            background-color: #17c1c1;
+                                            border-radius: 10px;
+                                            font-weight: 700;
+                                            margin-top: 20px;
+                                            color: rgb(255, 255, 255);
+                                            ">Register </button>
+                        
+                </form>
+            </div>
+        </div>
+    </div>  
+      
+</body>
+</html>

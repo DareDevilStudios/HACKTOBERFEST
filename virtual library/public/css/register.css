@@ -1,0 +1,141 @@
+*{
+    color: rgb(29, 20, 20) ;
+}
+.left{
+    background-color: #21242D;
+    width: 50%;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 214px;
+    height: 200px;
+} 
+.left p{
+    font-family: roboto,sans-serif;
+    color: #FBF5F4;
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 23px;
+}
+
+.left p:last-child{
+    letter-spacing: 13px;
+    font-size: 27px;
+    font-weight: bolder;
+}
+.right{
+    background-color: #16181E;
+    width: 50%;
+    height: 100vh;
+    padding:60px;
+}
+
+.container{
+    display: block;
+    margin-top: 30px;
+}
+
+.register{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: rgb(255, 255, 255);
+}
+.mob-logo{
+    width: 120px;
+    height: 120px;
+    display:none;
+}
+.back_button{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.inputs{
+    background-repeat: no-repeat;
+    background-size: 22px;
+    background-position: 6px 12px;
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 50px;
+    background-color: rgb(33,36,45);
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+#regnum{
+    /* background-image: url('/images/reg.png'); */
+}
+#username{
+    /* background-image: url('/images/user.png'); */
+}
+#email{
+    /* background-image: url('/images/mail.png'); */
+}
+#password{
+    /* background-image: url('/images/padlock.png'); */
+}
+
+#regnum:focus {
+    background-image: none; 
+}
+#username:focus {
+    background-image: none; 
+}
+#email:focus {
+    background-image: none; 
+}
+#password:focus {
+    background-image: none; 
+}
+
+.writing{
+    color: red;
+}
+
+
+@media (max-width: 768px){
+    .left{
+        display: none;
+    }
+    .right{
+        width: 100%;
+        padding:20px;
+    }
+    .container{
+        width: 100%;
+        margin-top: 0px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .mob-logo{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .register{
+       font-size: 40px;
+       margin-top: 20px;
+    }
+    .form{
+        margin-top: 10px;
+    }
+}
