@@ -1,4 +1,4 @@
-# Data-structures-and-algos is a repository made for people to start contributing in the open source and take part in hacktoberfest 2022
+# This is a repository made for people to start contributing in the open source and take part in hacktoberfest 2022
 
 participate in Hacktoberfest and get a chance to win amazing Swags!!
 
