@@ -1,0 +1,103 @@
+*{
+    color: rgb(29, 20, 20);
+}
+.left{
+    background-color: #21242D;
+    width: 50%;
+    height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    width: 214px;
+    height: 200px;
+}
+
+.left p{
+    font-family: roboto,sans-serif;
+    color: #FBF5F4;
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 23px;
+}
+
+.left p:last-child{
+    letter-spacing: 13px;
+    font-size: 27px;
+    font-weight: bolder;
+}
+
+.right{
+    background-color: #16181E;
+    width: 50%;
+    height: 100vh;
+    text-align: center;
+}
+
+.mob-logo{
+    width: 120px;
+    height: 120px;
+    display:none;
+}
+
+.welcome{
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: 90px;
+    letter-spacing: 4px;
+    color: rgb(255, 255, 255);
+}
+
+.sub_head{
+    color: grey;
+    font-size: 27px;
+}
+
+.center{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 50px;
+    background-color: rgb(33,36,45);
+    color: rgb(255, 255, 255);
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.inputs{
+    width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+@media (max-width: 768px){
+    .left{
+        display: none;
+    }
+    .right{
+        width: 100%;
+    }
+    .mob-logo{
+        display: inline;
+        margin-top: 60px;
+    }
+    .welcome{
+        display: none;
+    }
+    .sub_head{
+        margin-top: 10px;
+    }
+}

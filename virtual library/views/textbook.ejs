@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/branch.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <%- include("./partials/main_left.ejs") %>
+        <div class="branchb">
+            <h1 class="h1 headings"><%= header %></h1>
+            <div class="d-flex flex-wrap mt-3">
+                <% for (const file of files) { %>
+                    <button type="submit" class="allign btn btn-lg d-flex flex-column m-5 px-5 py-2" style="background: #00B9AE; color:aliceblue; border-radius:2rem; min-width: 3rem;">
+                        <a href="<%= file.path  %>"><h1 class="h4"><%= file.name %></h1></a>
+                        <div class="w-100 d-flex justify-content-center">
+                            <form   method="POST" action="/upvote" enctype="multipart/form-data"  class="d-inline-flex me-3">
+                                <input type="text" class="d-none text-danger" id="hid" name="_idget" value="<%= file._id  %>">
+                                <input type="text" class="d-none text-danger" id="hid" name="hid" value="<%= url_modd  %>">
+                                <input class="btn" type="submit" value="upvote">
+                            </form>
+                            
+                            
+                            <a href="report/<%= file._id %>/"><input class="btn text-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" value="report"></a>
+                        </div>
+                    </button>
+                <% } %>
+            </div>
+            <form  method="POST" action="/upload" enctype="multipart/form-data" class="forms col-4  mb-5 me-4">
+                <input type="file" name="file" accept="application/pdf" class="d-inline p-1" style="background: #00B9AE; color:aliceblue;">
+                <input type="submit" class="d-inline btn sub_btn" value="Upload" style="background: #00B9AE; color:aliceblue;">
+                <input type="text" class="d-none text-danger" id="hid" name="hid" value="<%= url_modd  %>">
+            </form>
+        </div>
+    </div>
+    
+  
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>

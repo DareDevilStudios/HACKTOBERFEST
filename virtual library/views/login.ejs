@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <%- include("./partials/head.ejs") %>
+        <link rel="stylesheet" href="/css/login.css">
+    </head>
+    <body>
+        <div class="d-flex">
+            <%- include("./partials/leftsidelogin.ejs") %>
+            <div class="right">
+                <img class="mob-logo" src="assets/logo-mob.png" alt="">
+                <p class="welcome">Welcome</p>
+                <p class="sub_head">Sign in to continue</p>
+
+                <% if(msg!="") { %>
+                    <div class="center">
+                        <div class="error"><%= msg%></div>
+                    </div>
+                <% } else { %>
+                    <br>
+                <% } %>
+
+                <form action="/" method="post" 
+                            style="
+                                display: flex;
+                                flex-direction: column;
+                                margin-top: 40px;
+                                align-items: center;
+                            ">
+                    <input class="inputs" type="text" name="Register_number" id="Register_number" placeholder=" 📇 Register number" 
+                            ><br>
+                    <input class="inputs" type="password" name="password" id="password" placeholder=" 🔒 Password" 
+                            style="
+                                padding: 10px;
+                                width: 60%;
+                                border-radius: 10px;
+                                margin-bottom: 30px;
+                            "><br>
+                    <button class="signin" 
+                            style="
+                                padding: 9px 13px;
+                                background-color: #17c1c1;
+                                border-radius: 10px;
+                                font-weight: 700;
+                                color: rgb(255, 255, 255);
+                            ">Sign in &gt;</button><br>
+                    <span 
+                            style="
+                                font-weight: 500;
+                                color: rgb(255, 255, 255);
+                            ">Forgot Password?</span><br>
+                    <p class="newuser" 
+                            style="
+                                font-weight: 600;
+                                color: rgb(255, 255, 255);
+                            ">You are new?
+                        <a href="/register">
+                            <span style="color: #17c1c1;">Create new</span>
+                        </a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
