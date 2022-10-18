@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/branch.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Report</title>
+</head>
+<body>
+    <div class="main">
+        <%- include("./partials/main_left.ejs") %>
+        <div class="branchb">
+            <h1 class="h1">Report</h1>
+            <h3 class="h3 mt-4" style="color: #00B9AE;">Enter the reason in 20 words</h3>
+            <form  method="POST" action="/report" enctype="multipart/form-data" class="w-75 d-flex flex-column mt-5 mb-5 me-4">
+                <textarea name="r_msg" class="p-2" placeholder="Enter here..." cols="10" rows="5" style="color: #000;"></textarea>
+                <div class=" d-flex justify-content-between mt-4">
+                    <input type="text" class="d-none text-danger" id="hid" name="hid" value="<%= spec_id  %>">
+                    <input type="text" class="d-none text-danger" id="hid_url" name="hid_url" value="<%= url_  %>">
+                    <input class="btn  w-25 py-2" type="submit" value="Submit" style="background: #00B9AE;">
+                    <a href="<%= url_  %>" class="btn w-25 py-2" style="background: #00B9AE;">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
