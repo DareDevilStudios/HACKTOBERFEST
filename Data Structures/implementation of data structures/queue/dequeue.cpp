@@ -1,11 +1,11 @@
+#include <bits/stdc++.h>
+using namespace std;
 
-import java.util.Scanner;
-
-public class dequeue{
-
-    int size;
+class dequeue{
+public:
+	int size;
     int front, rear;
-    int arr[];
+    int *arr;
     dequeue(int n) {
         size = n;
         arr = new int[size];
@@ -13,9 +13,9 @@ public class dequeue{
         rear = -1;
     }
 
-    void pushFront(int d){
+    bool pushFront(int d){
         if(isFull()){
-            return;
+            return false;
         }
         else if(isEmpty()){
             front = rear = 0;
@@ -27,10 +27,11 @@ public class dequeue{
             front--;
         }
         arr[front] = d;
+        return true;
     }
     int popFront(){
         if(isEmpty()){
-            System.out.println("q is empty");
+            cout << "q is empty" << endl;
             return -1;
         }
 
@@ -48,10 +49,10 @@ public class dequeue{
         return ans;
     }
 
-    void pushRear(int d){
+    bool pushRear(int d){
         if(isFull()){
-            System.out.println("q full");
-            return;
+            cout << "q full" << endl;
+            return false;
         }
         else if(isEmpty()){
             front = rear = 0;
@@ -63,19 +64,20 @@ public class dequeue{
             rear++;
         }
         arr[rear] = d;
+        return true;
     }
     int popRear(){
         if(isEmpty()){
-            System.out.println("q is empty");
+            cout << "q is empty" << endl;
             return -1;
         }
         int ans = arr[rear];
         arr[rear] = -1;
 
-        if(front == rear){
+        if(front == rear){  // single element
             front = rear = -1;
         }
-        else if(rear == 0){
+        else if(rear == 0){ // to maintain cyclic nature
             rear = size - 1;
         }
         else{
@@ -83,13 +85,13 @@ public class dequeue{
         }
         return ans;
     }
-    boolean isEmpty(){
+    bool isEmpty(){
         if(front == -1)
             return true;
         else
             return false;
     }
-    boolean isFull(){
+    bool isFull(){
         //                                                      rear is infront of front
         if( (front == 0 && rear == size - 1) || (front != 0 && rear == (front - 1) % (size - 1))){
             return true;
@@ -100,67 +102,67 @@ public class dequeue{
     }
     int getFront(){
         if(isEmpty()){
-            System.out.println("q is empty");
+            cout << "q is empty" << endl;
             return -1;
         }
         return arr[front];
     }
     int getRear(){
         if(isEmpty()){
-            System.out.println("q is empty");
+            cout << "q is empty" << endl;
             return -1;
         }
         return arr[rear];
     }
     void display(){
         if(isEmpty()){
-            System.out.println("q is empty");
+            cout << "q is empty" << endl;
             return;
         }
         int i;
-        System.out.println("front -> " + arr[front]);
-        System.out.print("items ->");
+        cout << "front -> " << arr[front] << endl;;
+        cout << "items ->";
         for(i = front; i != rear; i = (i + 1) % size ){
-            System.out.print(arr[i] + " ");
+            cout << arr[i] << " ";
         }
-        System.out.println(arr[i]);
-        System.out.println("rear -> " + arr[rear]);
+        cout << arr[i] << endl;
+        cout << "rear -> " << arr[rear] << endl;
     }
 
+};
 
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        dequeue q = new dequeue(size);
-        int z;
-        do{
-            System.out.println("enter the choice : \n 1.insert front \n 2.insert rear \n 3.delete front \n 4.delete rear");
-            int choice;
-            choice = sc.nextInt();
-            switch(choice){
-                case 1:System.out.println("enter a data");
-                    int a = sc.nextInt();
-                    q.pushFront(a);
-                    q.display();
-                    break;
-                case 2: System.out.println("enter a data");
-                    int b = sc.nextInt();
-                    q.pushRear(b);
-                    q.display();
-                    break;
-                case 3:
-                    q.popFront();
-                    q.display();
-                    break;
-                case 4:
-                    q.popRear();
-                    q.display();
-                    break;
-                default:System.out.println("invalid input");
-            }
-            System.out.print("do you want to continue [1-yes / 2-no] :");
-            z = sc.nextInt();
-        }while( z == 1);
-    }
+int main(){
+	dequeue q(5);
+    int z;
+    do{
+        cout << "\nenter the choice : \n 1.insert front \n 2.insert rear \n 3.delete front \n 4.delete rear" << endl;
+        int choice;
+        cin >> choice;
+        switch(choice){
+            case 1:cout << "enter a data : ";
+                int a;
+                cin >> a;
+                q.pushFront(a);
+                q.display();
+                break;
+            case 2: cout << "enter a data : ";
+                int b;
+                cin >> b;
+                q.pushRear(b);
+                q.display();
+                break;
+            case 3:
+                q.popFront();
+                q.display();
+                break;
+            case 4:
+                q.popRear();
+                q.display();
+                break;
+            default:cout << "invalid input";
+        }
+        cout << "do you want to continue [1-yes / 2-no] :";
+        cin >> z;
+    }while(z == 1);
+	return 0;
 }
