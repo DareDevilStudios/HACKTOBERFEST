@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
+pillow = "*"
+django-bootstrap4 = "*"
+django-widget-tweaks = "*"
+django-debug-toolbar = "*"
+django-cleanup = "*"
+django-extensions = "*"
+django = "==4.0.6"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

@@ -1,0 +1,96 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_javascript jquery='full' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Pending Appointments
+        </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+
+        {% include 'navbar-simple.html' %}
+        {% include 'messages.html' %}
+        
+        <section style="height: auto;">
+            <div class="container-fluid">
+                <div class="row pt-3" style="background-color: #8889a347;">
+                    
+                    <div class="col-md-6" style="align-items: center;"><h3><b>Pending Appointments</b></h3></div>
+                    <div class="col-md-6 text-right">
+                        <a href="{% url 'appointment:patient-completed-appointment' %}" class="btn btn-secondary">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            Completed Appointments
+                        </a>
+                    </div>
+
+                <br>
+                <br>
+                <br>            
+                    <div class="col-md-12 col-12" style="align-items: center;">
+                            <div class="table-responsive table-striped">
+                                <table class="table table-hover">
+                                  <thead class="thead">
+                                    <tr>
+                                      <th scope="col" width="10%">NO</th>
+                                      <th scope="col" width="15%">PHOTO</th>
+                                      <th scope="col" width="20%">DOCTOR</th>
+                                      <th scope="col" width="15%">DATE</th>
+                                      <th scope="col">TIME</th>
+                                      <th scope="col">CANCEL</th>
+                                    </tr>
+                                  </thead>
+                            <tbody>
+{% for appointment in appointments %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>
+                                        {%if appointment.doctor.docprofile.profile_pic %}
+                                            <img src="{{appointment.doctor.docprofile.profile_pic.url}}" class="photo">
+                                        {% else %}
+                                            <img src="{% static 'images\doctor_default.jpg' %}" class="photo">
+                                        {% endif %}
+                                    </td>
+                                    <td>{{appointment.doctor.get_full_name}}</td>
+                                    <td>{{appointment.date}}</td>
+                                    <td>{{appointment.start_time}}</td>
+                                    <td>
+                                        <form action="{% url 'appointment:cancel-appointment' %}" method="post">
+                                            {% csrf_token %}
+                                            <button class="btn btn-danger" type="submit" name="app_id" value={{appointment.id}}>Cancel</button>
+                                        </form>
+                                    </td>
+                                </tr>
+{% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+<style>
+
+    table{
+    margin-top: 14px;
+    }
+
+    th, td{
+        text-align: center;
+    }
+
+    .table .thead {
+        color: #fff;
+        background-color: #5c5b5d;
+    
+      }
+
+    .photo{
+        width: 100px;
+
+        /*border-radius: 50%;*/
+    }
+</style>
+</html>

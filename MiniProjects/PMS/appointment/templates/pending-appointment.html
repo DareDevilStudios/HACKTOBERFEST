@@ -1,0 +1,93 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_javascript jquery='full' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Pending Appointments
+        </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+
+        {% include 'navbar-simple.html' %}
+        {% include 'messages.html' %} 
+        <section style="height: auto;">
+            <div class="container-fluid">
+                <div class="row " style="background-color: #8889a347;">
+                    
+                    {% if status %}
+                    <div class="col-md-12" style="align-items: center;"><h3><b>Completed Appointments</b></h3></div>
+                    {% else %}
+                    <div class="col-md-12" style="align-items: center;"><h3><b>Pending Appointments</b></h3></div>
+                    {% endif %}
+
+                <br>
+                <br>
+                <br>            
+                    <div class="col-md-12 col-12" style="align-items: center;">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col" width="10%">No.</th>
+                                <th scope="col" width="15%"><h4>Photo</h4></th>
+                                <th scope="col" width="20%"><h4>Name</h4></th>
+                                <th scope="col" width="10%"><h4>Date</h4></th>
+                                <th scope="col" width="10%"><h4>Time</h4></th>
+                                <th scope="col"><h4>View Details</h4></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+{% for appointment in appointments %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>
+                                        {%if appointment.patient.patprofile.profile_pic %}
+                                            <img src="{{appointment.patient.patprofile.profile_pic.url}}" class="photo">
+                                        {% else %}
+                                            <img src="{% static 'images/default_pic.jpg' %}" class="photo">
+                                        {% endif %}
+                                    </td>
+                                    <td>{{appointment.patient.get_full_name}}</td>
+                                    <td>{{appointment.date}}</td>
+                                    <td>{{appointment.start_time}}</td>
+                                    <td>
+                                        {% if status %}
+                                            <form action="{% url 'appointment:past-prescription' %}" method="post">
+                                                {% csrf_token %}
+                                                <button class="btn btn-primary" type="submit" name="app_id" value={{appointment.id}}>View</button>
+                                            </form>
+                                        {% else %}
+                                            <form action="{% url 'appointment:view-appointment' %}" method="post">
+                                                {% csrf_token %}
+                                                <button class="btn btn-primary" type="submit" name="id" value={{appointment.id}}>View</button>
+                                            </form>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+{% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+<style>
+
+    table{
+    margin-top: 14px;
+    }
+
+    th, td{
+        text-align: center;
+    }
+
+    .photo{
+        width: 100px;
+
+       /* border-radius: 50%;*/
+    }
+</style>
+</html>

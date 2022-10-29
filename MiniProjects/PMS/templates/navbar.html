@@ -1,0 +1,169 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a href="{% url 'accounts:home' %}" class="navbar-brand">
+        <h4 class="brand">PATIENT MANAGEMENT SYSTEM</h4>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse justify-content-stretch" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    background="#343a40">
+                    <i class="fa fa-medkit" aria-hidden="true"></i>
+                    SPECIALITIES
+                </a>
+                <div class="dropdown-menu  bg-secondary text-white " aria-labelledby="navbarDropdown">
+{% for department in departments %}
+                    <a class="dropdown-item"
+                        href="select-doctor#department{{forloop.counter}}">{{department.name}}</a>
+{% endfor %}
+                </div>
+            </li>
+
+{% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'profiles:profile' %}"
+            background="#343a40">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            PROFILE
+            </a>
+            <a class="navbar-brand" href="{% url 'appointment:appointment-list' %}"
+            background="#343a40">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            VIEW APPOINTMENTS
+            </a>
+{% endif %}
+
+            <a class="navbar-brand" href="{% url 'appointment:doc-list'%}"
+                background="#343a40">
+                <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                BOOK AN APPOINTMENT
+            </a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown"
+                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    background="#343a40">
+
+                    <i class="fa fa-phone"></i>&nbsp;CONTACT
+
+                </a>
+
+                <div class="dropdown-menu width:30px text-dark bg-info"
+                    aria-labelledby="navbarDropdown">
+
+                    <a class="dropdown-item" href="#phone">
+                        Call
+                    </a>
+
+                    <a class="dropdown-item" href="#email">
+                        Email
+                    </a>
+
+                </div>
+            </li>
+
+{% if user.is_authenticated %}
+            <a class="navbar-brand logout" href="{% url 'accounts:logout' %}"
+            background="#343a40">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            LOGOUT
+            </a>
+{% else %}
+            <a class="navbar-brand" href="{% url 'accounts:login' %}"
+            background="#343a40">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            LOGIN
+            </a>
+{% endif %}
+
+        </ul>
+    </div>
+</nav>
+
+<style>
+    #navbarSupportedContent > ul > a.navbar-brand.logout:hover { /* Logout button in navbar*/
+        background-color: #dc3545;
+    }
+
+    .brand {
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .bg-dark {
+        background-color: #3d6364 !important;
+    }
+
+    .navbar-brand {
+        padding: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        transition-duration: 0.2s;;
+    }
+    .navbar-brand:hover {
+        border-radius: 6px;
+        background-color: #264445;
+    }
+
+    .dropdown {
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        transition-duration: 0.2s;
+    }
+    .dropdown:hover {
+        border-radius: 6px;
+        background-color: #264445;
+    }
+
+    .nav-item {
+        background-image: #5d5b59;
+    }
+
+    .navbar {
+        background-image: #5d5b59;
+        margin-left: -11px;
+    }
+
+    .nav-link {
+        background-image: #5d5b59;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+    }
+
+    .fa {
+        margin-right: 4px;
+        font-size:17px;
+<<<<<<< HEAD
+        color:rgb(254, 255, 255);
+=======
+        color:rgb(226, 223, 223);
+>>>>>>> c142d0f6bd20a25632d9d6f1c1cebf80665b08f8
+    }
+
+    .emg {
+        width: 20px;
+        height: 25px;
+    }
+
+    .bg-info {
+        background-color: #3d6364  !important;
+    }
+
+    .dropdown-item {
+        background-color: #3d6364  !important;
+        color: white;
+    }
+
+</style>
