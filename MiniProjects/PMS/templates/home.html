@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HOME</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    {% if user.is_doctor %}
+    {% include 'navbar-doctor.html' %}
+    {% else %}
+    {% include 'navbar.html' %}
+    <!--* navbar.html path /templates/navbar.html-->
+    {% endif %}
+
+    {% include 'messages.html' %}
+    <!--* messages.html path /templates/messages.html-->
+
+    <section style="background-color:  #8aa8ac;">
+        <marquee width="100%" direction="left" height="27px">
+            <b>
+                <h4 style="background-color:  #8aa8ac; color:  #464949;"><b>FOURSY GROUP OF HOSPITALS &nbsp &nbsp &nbsp
+                        &nbsp BRANCHES AT
+                        COCHIN,BANGLORE,MUMBAI,DELHI&nbsp &nbsp &nbsp &nbsp CONTACT AT:7012460529</b>
+                </h4>
+            </b>
+        </marquee>
+
+
+    
+        <header class="header text-center">
+            <div class="overlay"></div>
+            <div class="container" style="max-width: 658px;">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-xl-9 mx-auto mt-5">
+                            <h1 class="mb-5"></h1>
+                            <h1> <b>Making Health<br>Care Better Together</b></h1>
+                            <h4 style="color: #000000e3;">"Hospitals are about healing" -Irwin Redlener</h4>
+                            <h5>Every day we bring hope and smile to the patients we serve</h5>
+                            {% if user.is_patient %}
+                            <a class="btn btn-primary" href="{% url 'appointment:doc-list' %}">Book an appointment</a>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                                <a class="btn btn-danger" href="{% url 'accounts:logout' %}">Logout</a>
+                            {% else %}
+                                <a class="btn btn-primary" href="{% url 'accounts:login' %}">Login</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="mainbody">
+            <div class="row1  row " style="margin-left: -233px; margin-top: -365px;">
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem;  background:#fff"
+                        onmouseover="this.style.background=' #e6f9ff';" onmouseout="this.style.background='#fff';">
+                        <img class=" card-img-top"
+                            src="https://media.istockphoto.com/photos/assessment-and-analysis-by-professional-auditing-consultant-concept-picture-id1162629597?k=20&m=1162629597&s=612x612&w=0&h=t7gXu0j4Tk224DH7DFfLC7tP7yTns1ZRj0pe5bTkR4w=">
+                        <div class="card-body">
+                            <p class="card-text">
+                            <h3>OUR SERVICES</h3>
+                            <br>
+                            Foursy Group Hospitals ensures to provide the highest quality of care and a transformative
+                            experience for all your healthcare needs.
+                            </p>
+                            <b><a href="">Know more</a></b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem;" background="#fff"
+                        onmouseover="this.style.background=' #e6f9ff';" onmouseout="this.style.background='#fff';">
+                        <img class="card-img-top"
+                            src="https://blog.presentationload.com/wp-content/uploads/2020/06/vision-mission.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">
+                            <h3>MISSION</h3>
+                            <br>
+                            Because not all wounds are visible, we, are dedicated to healing the unseen. We do that by
+                            helping our patients overcome all the ...
+                            </p>
+                            <b><a href="">Know more</a></b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem;" background="#fff"
+                        onmouseover="this.style.background=' #e6f9ff';" onmouseout="this.style.background='#fff';">
+                        <img class="card-img-top"
+                            src="https://t3.ftcdn.net/jpg/01/37/90/78/360_F_137907818_LNzsqtQT7OAZ98BuA3T4TKiEbEOY543G.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">
+                            <h3>VISION</h3>
+                            <br>
+                            To provide compassionate, accessible, high quality, cost effective healthcare to one all. To
+                            serve with a patient's first motto... </p>
+                            <b><a href="">Know more</a></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row2 row " style="margin-left: -233px; margin-top: -220px;">
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem;" background="#fff"
+                        onmouseover="this.style.background=' #e6f9ff';" onmouseout="this.style.background='#fff';">
+                        <img class="card-img-top"
+                            src="https://www.business2community.com/wp-content/uploads/2015/02/rRlmJDvPnPiayf2pDNN7A6PB-b8cBzkrotS2b1NVgjna2GV6RLtONQlIOaQYAX9nel1axTyOgX82a57RnHdkqTk3Mh6hBqyK3UbR2tGqzQPgF-RhtQrliJthr5a31UJEBeGBxa0.png">
+                        <div class="card-body">
+                            <p class="card-text">
+                            <h3><b>Location</b></h3>
+                            <br>
+                            FOURSY GROUP OF HOSPITALS<br>KALAMASSERY P.O<br>CUSAT<br>COCHIN<br>
+                            </p>
+                            <b><a href="https://goo.gl/maps/4p2ofe2KBKs6wxze8">Know more</a></b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem;" background="#fff"
+                        onmouseover="this.style.background=' #e6f9ff';" onmouseout="this.style.background='#fff';">
+                        <img class="card-img-top" src="https://www.aplaceformom.com/images/1147215">
+                        <div class="card-body">
+                            <p class="card-text">
+                            <h3><b><a>Home Care</a></b></h3>
+                            <br>
+                            The Home Care @ Foursy group of hospitals aim for good health and well-being by providing
+                            the best care to every patient...<br>
+                            <b><a href="">Know more</a></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="card" style="width: 18rem;" background="#fff"
+                        onmouseover="this.style.background=' #e6f9ff';" onmouseout="this.style.background='#fff';">
+                        <img class="card-img-top"
+                            src="https://sp-ao.shortpixel.ai/client/q_glossy,ret_img/https://sirinahealth.com/wp-content/uploads/2017/09/Lab-2.jpg">
+                        <div class="card-body">
+                            <p class="card-text">
+                            <h3><b><a>Health Packages</a></b></h3>
+                            <br>
+                            Foursy Group of Hospitals, one of Kochi's most trusted health care providers is dedicated to
+                            offer you a comprehensive and excellent...
+                            <br>
+                            <b><a href="">Know more</a></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="row">
+            <div class="col-md-12 col-12">
+                <div class="container container-fluid">
+                    <h2>
+                        <B>Overview</B>
+                    </h2>
+                    <p style="font-family:roboto ;">
+                    <p>
+                        Foursy Group of Hospitals,Cochin branch set in a soothingly beautiful 40-acre waterfront campus,
+                        is a 670-bed quaternary care facility & one of the best hospital in Kochi, Kerala. Fulfilling
+                        the vision and dream of beloved chairman, the center has been delivering quality healthcare at
+                        affordable cost through its Centres of Excellence and a multi-specialty hospital since 2000. It
+                        is the first JCI accredited quaternary care multispecialty hospital in the state and combines
+                        the best of talent and technology to provide holistic treatment with a multidisciplinary
+                        approach.</p>
+                    <p>
+                        Across the years, Foursy Group of Hospitals has evolved into a medical destination - one that
+                        attracts not just thousands of patients across the world; but also attracts and nurtures the
+                        best talent, keeps upgrading technology as well as fosters research, education and a distinctive
+                        work culture that is ethically and socially relevant.</p>
+                    <p>
+                        Kerala’s first quaternary care hospital, Foursy Group of Hospitals has also been accredited by
+                        NABH, received NABH certification for Nursing Excellence, Green OT (Green Operation Theatres)
+                        Certification by Bureau Veritas all within a year of opening its door to the world.
+                    </p>
+                    <p>
+                        With a multidisciplinary treatment approach at its core, Foursy Group of Hospitals offers
+                        quality healthcare under Centres of Excellence in Cardiac Sciences, Neurosciences, Orthopaedics
+                        & Rheumatology, Nephrology & Urology, Oncology, Women’s Health, Child & Adolescent Health,
+                        Gastroenterology & Hepatology, and Multi-Organ Transplantation. The multispecialty hospital
+                        inside the campus provides unmatched care by other specialties such as Internal Medicine,
+                        Infectious Diseases, Interventional Radiology, ENT, Plastic, Cosmetic & Microvascular Surgery,
+                        General Surgery, Psychiatry, Dentistry, Maxillofacial Surgery, Pulmonology, Ophthalmology,
+                        Nuclear Medicine, Centre for Fertility, Dermatology and Cosmetology to name a few.</p>
+
+                    <p>Some of its clinical programs such as Physical Medicine & Rehabilitation (PMR), Bone Marrow
+                        Transplant, Liver Transplant, Kidney Transplant, Parkinson and Movement Disorders treatment
+                        including Deep Brain Stimulation (DBS), Spine Surgery, Epilepsy Surgery, Cardiac
+                        Electrophysiology benefited hundreds of people across the world. Foursy Minimal Access Robotic
+                        Surgery (MARS) program has successfully performed over 1200 robotic-assisted surgeries by
+                        transplant surgeons, urologists, and gynecologists. The hospital also is one of the very few in
+                        the region to offer full-fledged Extra Corporeal Membrane Oxygenation (ECMO) facilities reviving
+                        critically ill patients.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <section>
+        <div class="row">
+            <h3><b style="padding-left: 210px;">OUR HOSPITALS</b></h3>
+            <br>
+        </div>
+        <div class=" fststhos row">
+            <div class="col-md-6 col-12">
+                <div class="card bg-white text-dark ">
+                    <img class="card-img"
+                        src="https://comparemedicaltourism.com/wp-content/uploads/2020/12/Aster-Medcity-9.jpeg">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"><b>COCHIN BRANCH</b></h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="card bg-white text-dark">
+                    <img class="card-img"
+                        src="https://assetsamerica.com/wp-content/uploads/Lines-of-Business/Hospital-Building/POSTED/B-WI_Columbia-StMarys_Hospital_2_DriDesign_lo-1900x1264.jpg">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"><b>BANGLORE BRANCH</b></h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" fststhos row">
+            <div class="col-md-6 col-12">
+                <div class="card bg-white text-dark ">
+                    <img class="card-img"
+                        src="https://s3-prod.modernhealthcare.com/s3fs-public/NEWS_180309988_AR_0_XNBIZJVLYMML.jpg">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"><b>MUMBAI BRANCH</b></h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="card bg-white text-dark">
+                    <img class="card-img"
+                        src="https://healthcare.ascension.org/-/media/project/ascension/healthcare/legacy/markets/wisconsin/locations/se-wi/st-francis/wi_ascensionstfrancis_1600x1064.jpg">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title"><b>DELHI BRANCH</b></h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% include 'footer.html' %}
+
+    <style>
+        header.header {
+            position: relative;
+            background-color: #343a40;
+            height: 100vh;
+            background: url('https://www.vmcdn.ca/f/files/shared/stock-images/hospital-(1).jpg;w=960%20hd%20imAGE') no-repeat fixed center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        header.header .overlay {
+            position: absolute;
+            background-color: #01010114;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            opacity: .3
+        }
+
+        header.header h1 {
+            font-size: 2rem
+        }
+
+        header.header a {
+            margin-top: 1rem;
+        }
+
+        .header .card {
+            border: 0;
+            border-radius: 12px;
+            color: black;
+            background: #ffffff4f;
+            padding-bottom: 65px;
+        }
+
+        .header .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.847), 0 4px 8px rgba(0, 0, 0, 0.337);
+        }
+
+        .mainbody {
+            width: 100%;
+            height: 100%;
+            padding-left: 366px;
+            padding-top: 323px;
+            image-resolution: 100;
+            background-image: url('https://img.freepik.com/premium-photo/blurred-interior-hospital-clinical-with-people-abstract-medical-background_1484-1309.jpg?w=2000');
+        }
+
+        .row{
+            margin-right: 0px;
+        }
+        .row1 {
+            padding: 132px;
+            padding-left: 0px;
+        }
+
+        .row2 {
+            padding: 132px;
+            padding-left: 0px;
+            margin-top: 15px;
+
+        }
+
+        .card {
+            margin-top: 15px;
+            transition-duration: 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+        }
+
+        .fststhos {
+            padding-left: 10px;
+        }
+
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+-i https://pypi.org/simple
+asgiref==3.5.2
+beautifulsoup4==4.11.1
+django==4.0.5
+django-bootstrap-v5==1.0.11
+django-phonenumber-field[phonenumberslite]==6.3.0
+phonenumberslite==8.12.51
+pillow==9.1.1
+soupsieve==2.3.2.post1
+sqlparse==0.4.2
+tzdata==2022.1
+windows-curses==2.3.0

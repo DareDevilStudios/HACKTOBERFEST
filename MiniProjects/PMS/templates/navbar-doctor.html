@@ -1,0 +1,110 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a href="{% url 'accounts:home' %}" class="navbar-brand">
+        <h4 class="brand">PATIENT MANAGEMENT SYSTEM</h4>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse justify-content-stretch" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+
+{% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'profiles:profile' %}"
+            background="#343a40">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            PROFILE
+            </a>
+{% endif %}
+
+            <a class="navbar-brand" href="{% url 'appointment:pending-appointment'%}"
+                background="#343a40">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                PENDING APPOINTMENTS <div class="badge badge-pill badge-danger">{{ pending_count }}</div>
+            </a>
+
+
+            <a class="navbar-brand" href="{% url 'appointment:completed-appointment'%}"
+               background="#343a40">
+               <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+               COMPLETED APPOINTMENTS <span class="badge badge-pill badge-danger">{{ completed_count }}</span>
+            </a>
+
+{% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'accounts:logout' %}"
+            background="#343a40">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            LOGOUT
+            </a>
+{% endif %}
+
+        </ul>
+    </div>
+</nav>
+
+<style>
+    #navbarSupportedContent > ul > a:nth-child(4):hover {
+        background-color: #dc3545;
+    }
+    .brand {
+        color: #fff;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+
+    .bg-dark {
+        background-color: #3d6364 !important;
+    }
+
+    .fa {
+        color: rgb(226, 223, 223);
+    }
+    
+    .navbar-brand {
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        transition-duration: 0.2s;
+    }
+    .navbar-brand:hover {
+        border-radius: 6px;
+        background-color: #264445;
+    }
+    
+    .nav-item {
+        background-image: #5d5b59;
+    }
+
+    .navbar {
+        background-image: #5d5b59;
+        margin-left: -11px;
+    }
+
+    .nav-link {
+        background-image: #5d5b59;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+    }
+
+    .emg {
+        width: 20px;
+        height: 25px;
+    }
+
+    .bg-info {
+        background-color: #3d6364  !important;
+    }
+
+    .dropdown-item {
+        background-color: #3d6364  !important;
+        color: white;
+    }
+
+</style>

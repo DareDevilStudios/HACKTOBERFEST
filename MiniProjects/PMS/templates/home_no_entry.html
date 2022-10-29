@@ -1,0 +1,20 @@
+{% load static %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<html>
+<head>
+    <title>Admin Logout Request</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type= "image/x-icon" />
+</head>
+
+<body>
+    {% include 'navbar-simple.html' %}
+
+    <p class="text-center fs-1">Logged into superuser account</p>
+    <div class="text-center">
+        <a class="btn btn-danger" href="{% url 'accounts:logout' %}">Please Logout</a>
+    </div>
+</body>
+</html>

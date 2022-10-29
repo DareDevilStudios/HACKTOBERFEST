@@ -1,0 +1,107 @@
+{% load static %}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Confirm Appointment</title>
+        <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type= "image/x-icon" />
+    </head>
+    <body>
+
+        {% include 'navbar-simple.html' %} <!--* navbar-simple.html is the navbar template-->
+
+        <div class="row">
+            <div  class="col-md-12 col-12">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3 border p-4 shadow bg-light">
+                            <div class="col-12">
+                                <h3 class="fw-normal text-secondary fs-4 text-uppercase mb-4" style="text-align:center;">Appointment form</h3>
+                            </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <b>Doctor: {{doctor.get_full_name}}</b>
+                            </div>
+                            <div class="col-6">
+                                <b>Department: {{doctor.docprofile.department.name}}</b>
+                            </div>
+                        </div>
+                        <form class="pt-5" action="{% url 'appointment:appointment-book' %}" method="post" id="appointbook">
+                            {% csrf_token%}
+                            <input type="hidden" name="doctor" value="{{doctor.id}}">
+                            <div class="form-group">
+                                <label for="date"><b>Appointment Date:</b></label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="time"><b>Appointment Time:</b></label>
+                                <br>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    {% for _,slot in time_slot%} <!-- * Tuple unpacking  -->
+                                        <div class="btn btn-warning">
+                                          <input type="radio" name="slot" id="slot{{forloop.counter}}" required value="{{slot}}">{{slot}}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        <b> Reason for taking appointment</b>
+                            <div id="reason" class="form-input-wide">
+                                <textarea id="input_21" class="form-textarea" name="reason" cols="40" rows="6" data-component="textarea" required></textarea>
+                            </div>
+                            <button class="btn btn-success">Book Appointment</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!--* This script diables previous dates using JQuery, more info: https://devnote.in/how-to-disable-previous-dates-in-date-picker-using-jquery/ -->
+    <script language="javascript">
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var dd = String(tomorrow.getDate()).padStart(2, '0');
+        var mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        var yyyy = tomorrow.getFullYear();
+    
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#date').attr('min',today);
+    </script>
+
+    <style>
+        .btn {
+            border: 2px;
+            font-size: 1rem;
+            padding: 0.7rem;
+            margin: 0.7rem;
+        }
+
+        .button {
+            border-radius: 12px;
+            border: 2px;
+            font-size: 1rem;
+            padding: 0.4rem;
+        }
+          
+        .button:hover {
+            background-color: #4CAF50; /* Green */
+            color: white;
+        }
+
+        .btn-success {
+            color: white;
+            border-radius: 12px;
+            padding: 16px 32px;
+            font-size: 16px;
+            margin-top: 2rem;
+        }
+        
+    </style>
+</html>
